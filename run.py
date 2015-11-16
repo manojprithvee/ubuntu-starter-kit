@@ -1,3 +1,26 @@
+'''Copyright (c) 2015 Spider Studios
+
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+'''
 import os,sys,getpass
 import subprocess,threading,time
 # Define a function for running commands and capturing stdout line by line
@@ -81,8 +104,10 @@ def main(a,b):
 	if a.lower()=="y" or a=="" :
 		runProcess("wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -")
 		runProcess('echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list')
+		runProcess("sudo add-apt-repository ppa:webupd8team/java")
+		runProcess("sudo add-apt-repository ppa:paolorotolo/android-studio")
 		update_apt_get()
-		a='google-chrome-stable lib32z1 gcc python-dev python3-dev lib32ncurses5 lib32bz2-1.0 filezilla rubygems ruby-full build-essential nautilus-open-terminal python3-pip python-pip lua5.2 npm nodejs sublime-text-installer git vim android-tools-adb zip unzip vlc putty handbrake python-nautilus python-notify'
+		a='oracle-java8-installer android-studio google-chrome-stable lib32z1 gcc python-dev python3-dev lib32ncurses5 lib32bz2-1.0 filezilla rubygems ruby-full build-essential nautilus-open-terminal python3-pip python-pip lua5.2 npm nodejs sublime-text-installer git vim android-tools-adb zip unzip vlc putty handbrake python-nautilus python-notify'
 		a=a.split()
 		for i in a: 
 			install_apt_get(i)
