@@ -99,19 +99,21 @@ def update_apt_get():
 	if output.find("Failed to fetch http:")!=-1:
 		wait_for_internet()
 		update_apt_get() 
-def main(a,b):
+def main(a,b,c):
 	
 	if a.lower()=="y" or a=="" :
 		runProcess("wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -")
 		runProcess('echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list')
 		runProcess("sudo add-apt-repository ppa:webupd8team/java")
-		runProcess("sudo add-apt-repository ppa:paolorotolo/android-studio")
+		if c.lower()=="y" or c=="": 
+			runProcess("sudo add-apt-repository ppa:paolorotolo/android-studio")
 		update_apt_get()
-		a='oracle-java8-installer android-studio google-chrome-stable lib32z1 gcc python-dev python3-dev lib32ncurses5 lib32bz2-1.0 filezilla rubygems ruby-full build-essential nautilus-open-terminal python3-pip python-pip lua5.2 npm nodejs sublime-text-installer git vim android-tools-adb zip unzip vlc putty handbrake python-nautilus python-notify'
+		if c.lower()=="y" or c=="":
+			install_apt_get("android-studio")
+		a='php5-cli oracle-java8-installer google-chrome-stable lib32z1 gcc python-dev python3-dev lib32ncurses5 lib32bz2-1.0 filezilla rubygems ruby-full build-essential nautilus-open-terminal python3-pip python-pip lua5.2 npm nodejs sublime-text-installer git vim android-tools-adb zip unzip vlc putty handbrake python-nautilus python-notify'
 		a=a.split()
 		for i in a: 
 			install_apt_get(i)
-	
 	if b.lower()=="y" or b=="":
 		a="python-numpy python3-numpy python-scipy python3-scipy python-dateutil python-docutils python-feedparser python-gdata python-jinja2 python-ldap python-libxslt1 python-lxml python-mako python-mock python-openid python-psycopg2 python-psutil python-pybabel python-pychart python-pydot python-pyparsing python-reportlab python-simplejson python-tz python-unittest2 python-vatnumber python-vobject python-webdav python-werkzeug python-xlwt python-yaml python-zsi python3-dateutil python3-docutils python3-feedparser python3-jinja2 python3-lxml python3-mako python3-mock python3-psycopg2 python3-psutil python3-pyparsing python3-reportlab python3-simplejson python3-tz python3-werkzeug python3-yaml"
 		a=a.split()
@@ -125,7 +127,8 @@ def main(a,b):
 	os._exit(0)
 a=raw_input("\ninstall default programs (Y/n)")
 b=raw_input("\nAre you going to program in python (Y/n)")
-thread = threading.Thread(target = main, args=(a,b,))
+c=raw_input("\nDo you want android-studio (Y/n)")
+thread = threading.Thread(target = main, args=(a,b,c,))
 thread.start()
 while thread.isAlive():
 	sys.stdout.write(".")
