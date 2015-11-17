@@ -21,7 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 '''
-import os,sys,getpass
+import os,sys,getpass,curses
 import subprocess,threading,time
 # Define a function for running commands and capturing stdout line by line
 # (Modified from Vartec's solution because it wasn't printing all lines)
@@ -34,7 +34,6 @@ def wait_for_internet():
 		output=runProcess("ping -c 1 8.8.8.8")
 		print ".",
 		if output.find("100% packet loss")==-1 and output.find("connect: Network is unreachable")==-1:
-			
 			return
 
 def MyThread ():
@@ -133,4 +132,4 @@ thread.start()
 while thread.isAlive():
 	sys.stdout.write(".")
 	sys.stdout.flush()
-	time.sleep(.5)
+	time.sleep(.1)
