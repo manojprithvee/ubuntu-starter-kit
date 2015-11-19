@@ -285,6 +285,19 @@ menu_data = {
                             "command": "sudo apt-get install redis-server"
                         }
                     ]
+                },
+                {
+                    "title": "Neo4j",
+                    "type": "menu",
+                    "subtitle": "Press Yes if u want to install",
+                    "options": 
+                    [
+                        {
+                            "title": "YES",
+                            "type": "command",
+                            "command": "sudo apt-get install neo4j"
+                        }
+                    ]
                 }
             ]
         }

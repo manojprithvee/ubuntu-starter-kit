@@ -128,6 +128,7 @@ def add_aditional_repos_and_updating():
 	screen.clear()
 	os.system("echo add aditional repos for installiation...")
 	os.system("sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list")
+	os.system("wget -O - http://debian.neo4j.org/neotechnology.gpg.key | apt-key add - && echo 'deb http://debian.neo4j.org/repo stable/' > /etc/apt/sources.list.d/neo4j.list")
 	os.system("sudo apt-get install -y python-software-properties && sudo add-apt-repository -y ppa:rwky/redis")
 	os.system("sudo add-apt-repository -y ppa:webupd8team/java")
 	screen.clear() #clears previous screen on key press and updates display based on pos
@@ -144,7 +145,7 @@ def display(text):
 
 # Main program
 if __name__ == "__main__":
-	os.system("setterm -curser off && clear && figlet 'Ubuntu Starter Kit' && sleep 3 && clear && setterm -curser on")
+	os.system("setterm -cursor off && clear && figlet 'Ubuntu Starter Kit' && sleep 3 && clear && setterm -cursor on")
 	screen = curses.initscr() #initializes a new window for capturing key presses
 	curses.noecho() # Disables automatic echoing of key presses (prevents program from input each key twice)
 	curses.cbreak() # Disables line buffering (runs each key as it is pressed rather than waiting for the return key to pressed)
@@ -160,12 +161,13 @@ if __name__ == "__main__":
 	if platform.dist()[0]=="Ubuntu":
 		if os.getuid() == 0:
 			if check_for_internet() :
-				if sys.argv[1]=="log":	
-					files=open("ubuntu-stater-kit.log","w")
-					files.write("")
-					files.close()
-					process=subprocess.Popen("gnome-terminal -e 'python logger.py'",stdout=subprocess.PIPE, stderr=subprocess.STDOUT,shell=True,executable="/bin/sh")		
-				#add_aditional_repos_and_updating()
+				if len(sys.argv)==2:
+					if sys.argv[1]=="log":	
+						files=open("ubuntu-stater-kit.log","w")
+						files.write("")
+						files.close()
+						process=subprocess.Popen("gnome-terminal -e 'python logger.py'",stdout=subprocess.PIPE, stderr=subprocess.STDOUT,shell=True,executable="/bin/sh")		
+				add_aditional_repos_and_updating()
 				processmenu(menu_data)
 			else:
 				processmenu(no_internet_menu)
