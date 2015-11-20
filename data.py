@@ -19,7 +19,7 @@ menu_data = {
                         {
                             "title": "YES",
                             "type": "command",
-                            "command": "sudo apt-get install gcc build-essential python-dev python3-dev python-numpy python3-numpy python-scipy python3-scipy python-dateutil python-docutils python-feedparser python-gdata python-jinja2 python-ldap python-libxslt1 python-lxml python-mako python-mock python-openid python-psycopg2 python-psutil python-pybabel python-pychart python-pydot python-pyparsing python-reportlab python-simplejson python-tz python-unittest2 python-vatnumber python-vobject python-webdav python-werkzeug python-xlwt python-yaml python-zsi python3-dateutil python3-docutils python3-feedparser python3-jinja2 python3-lxml python3-mako python3-mock python3-psycopg2 python3-psutil python3-pyparsing python3-reportlab python3-simplejson python3-tz python3-werkzeug python3-yaml"
+                            "command": ["sudo apt-get install gcc build-essential python-dev python3-dev python-numpy python3-numpy python-scipy python3-scipy python-dateutil python-docutils python-feedparser python-gdata python-jinja2 python-ldap python-libxslt1 python-lxml python-mako python-mock python-openid python-psycopg2 python-psutil python-pybabel python-pychart python-pydot python-pyparsing python-reportlab python-simplejson python-tz python-unittest2 python-vatnumber python-vobject python-webdav python-werkzeug python-xlwt python-yaml python-zsi python3-dateutil python3-docutils python3-feedparser python3-jinja2 python3-lxml python3-mako python3-mock python3-psycopg2 python3-psutil python3-pyparsing python3-reportlab python3-simplejson python3-tz python3-werkzeug python3-yaml"]
                         }
                     ]
                 },
@@ -32,7 +32,7 @@ menu_data = {
                         {
                             "title": "YES",
                             "type": "command",
-                            "command": "sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev ruby-full"
+                            "command": ["sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev ruby-full"]
                         }
                     ]
                 },
@@ -51,7 +51,7 @@ menu_data = {
                                 {
                                     "title": "YES",
                                     "type": "command",
-                                    "command": "sudo apt-get install default-jdk"
+                                    "command": ["sudo apt-get install default-jdk"]
                                 }
                             ]
                         },
@@ -64,7 +64,7 @@ menu_data = {
                                 {
                                     "title": "YES",
                                     "type": "command",
-                                    "command": "sudo apt-get install oracle-java8-installer"
+                                    "command": ["sudo add-apt-repository -y ppa:webupd8team/java","sudo apt-get update","sudo apt-get install oracle-java8-installer"]
                                 }
                             ]
                         }
@@ -79,7 +79,7 @@ menu_data = {
                         {
                             "title": "YES",
                             "type": "command",
-                            "command": "sudo apt-get install git-core "
+                        "command": ["sudo apt-get install git-core "]
                         }
                     ]
                 },
@@ -92,7 +92,7 @@ menu_data = {
                         {
                             "title": "YES",
                             "type": "command",
-                            "command": "sudo apt-get install php5-cli "
+                            "command": ["sudo apt-get install php5-cli "]
                         }
                     ]
                 },
@@ -105,7 +105,7 @@ menu_data = {
                         {
                             "title": "YES",
                             "type": "command",
-                            "command": "sudo apt-get install perl "
+                            "command": ["sudo apt-get install perl "]
                         }
                     ]
                 },
@@ -118,7 +118,7 @@ menu_data = {
                         {
                             "title": "YES",
                             "type": "command",
-                            "command": "sudo apt-get install nodejs npm "
+                            "command": ["sudo apt-get install nodejs npm "]
                         }
                     ]
                 },
@@ -131,7 +131,7 @@ menu_data = {
                         {
                             "title": "YES",
                             "type": "command",
-                            "command": "sudo apt-get install gcc g++ "
+                            "command": ["sudo apt-get install gcc g++ "]
                         }
                     ]
                 },
@@ -144,7 +144,7 @@ menu_data = {
                         {
                             "title": "YES",
                             "type": "command",
-                            "command": "sudo apt-get install golang-stable "
+                            "command": ["sudo apt-get install golang-stable "]
                         }
                     ]
                 },
@@ -157,7 +157,7 @@ menu_data = {
                         {
                             "title": "YES",
                             "type": "command",
-                            "command": "sudo apt-get install  haskell-platform"
+                            "command": ["sudo apt-get install  haskell-platform"]
                         }
                     ]
                 },
@@ -170,7 +170,7 @@ menu_data = {
                         {
                             "title": "YES",
                             "type": "command",
-                            "command": "sudo apt-get install lua5.2"
+                            "command": ["sudo apt-get install lua5.2"]
                         }
                     ]
                 },
@@ -183,7 +183,7 @@ menu_data = {
                         {
                             "title": "YES",
                             "type": "command",
-                            "command": "sudo apt-get install scala"
+                            "command": ["sudo apt-get install scala"]
                         }
                     ]
                 },
@@ -196,7 +196,7 @@ menu_data = {
                         {
                             "title": "YES",
                             "type": "command",
-                            "command": "sudo apt-get install r-base"
+                            "command": ["sudo apt-get install r-base"]
                         }
                     ]
                 },
@@ -209,7 +209,7 @@ menu_data = {
                         {
                             "title": "YES",
                             "type": "command",
-                            "command": "sudo apt-get install curl && curl -sSf https://static.rust-lang.org/rustup.sh | sh"
+                            "command": ["sudo apt-get install curl" , "curl -sSf https://static.rust-lang.org/rustup.sh | sh"]
                         }
                     ]
                 },
@@ -222,7 +222,7 @@ menu_data = {
                         {
                             "title": "YES",
                             "type": "command",
-                            "command": "sudo apt-get install arduino arduino-core"
+                            "command": ["sudo apt-get install arduino arduino-core"]
                         }
                     ]
                 }
@@ -243,7 +243,7 @@ menu_data = {
                         {
                             "title": "YES",
                             "type": "command",
-                            "command": "sudo apt-get install mysql-server && sudo mysql_install_db && sudo /usr/bin/mysql_secure_installation"
+                            "command": ["sudo apt-get install mysql-server", "sudo mysql_install_db "," sudo /usr/bin/mysql_secure_installation"]
                         }
                     ]
                 },
@@ -256,7 +256,7 @@ menu_data = {
                         {
                             "title": "YES",
                             "type": "command",
-                            "command": "sudo apt-get install postgresql postgresql-contrib"
+                            "command": ["sudo apt-get install postgresql postgresql-contrib"]
                         }
                     ]
                 },
@@ -269,7 +269,7 @@ menu_data = {
                         {
                             "title": "YES",
                             "type": "command",
-                            "command": "sudo apt-get install -y mongodb-org"
+                            "command": ["sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10"," echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list","sudo apt-get update","sudo apt-get install -y mongodb-org"]
                         }
                     ]
                 },
@@ -282,7 +282,7 @@ menu_data = {
                         {
                             "title": "YES",
                             "type": "command",
-                            "command": "sudo apt-get install redis-server"
+                            "command": ["sudo apt-get install -y python-software-properties","sudo add-apt-repository -y ppa:rwky/redis","sudo apt-get update","sudo apt-get install redis-server"]
                         }
                     ]
                 },
@@ -295,7 +295,7 @@ menu_data = {
                         {
                             "title": "YES",
                             "type": "command",
-                            "command": "sudo apt-get install neo4j"
+                            "command": ["wget -O - http://debian.neo4j.org/neotechnology.gpg.key | apt-key add -", "echo 'deb http://debian.neo4j.org/repo stable/' > /etc/apt/sources.list.d/neo4j.list","sudo apt-get update","sudo apt-get install neo4j"]
                         }
                     ]
                 }

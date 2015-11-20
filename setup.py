@@ -106,7 +106,9 @@ def processmenu(menu, parent=None):
 				os._exit(0)
 			screen.clear() #clears previous screen
 			wait_for_internet()
-			os.system(menu["options"][getin]["command"]+" && echo Please press <enter> to continue  && read input_variable") # run the command
+			for i in menu["options"][getin]["command"]:
+				os.system(i)
+			os.system("echo Please press <enter> to continue  && read input_variable") # run the command
 			screen.clear() #clears previous screen on key press and updates display based on pos
 			curses.reset_prog_mode()	 # reset to "current" curses environment
 			curses.curs_set(1)				 # reset doesn"t do this right
@@ -122,21 +124,6 @@ def runProcess(exe):
     p = subprocess.Popen(exe, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,shell=True,executable="/bin/bash")
     return p.stdout.read()
 
-def add_aditional_repos_and_updating():
-	curses.def_prog_mode()		# save curent curses environment
-	os.system("reset")
-	screen.clear()
-	os.system("echo add aditional repos for installiation...")
-	os.system("sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list")
-	os.system("wget -O - http://debian.neo4j.org/neotechnology.gpg.key | apt-key add - && echo 'deb http://debian.neo4j.org/repo stable/' > /etc/apt/sources.list.d/neo4j.list")
-	os.system("sudo apt-get install -y python-software-properties && sudo add-apt-repository -y ppa:rwky/redis")
-	os.system("sudo add-apt-repository -y ppa:webupd8team/java")
-	screen.clear() #clears previous screen on key press and updates display based on pos
-	os.system("echo updating the package databases.... && sleep 2 &&sudo apt-get update && echo Please press <enter> to continue  && read input_variable") # run the command
-	screen.clear() #clears previous screen on key press and updates display based on pos
-	curses.reset_prog_mode()	 # reset to "current" curses environment
-	curses.curs_set(1)				 # reset doesn"t do this right
-	curses.curs_set(0)
 
 def display(text):
 	w=open("ubuntu-stater-kit.log" ,"a")
@@ -167,7 +154,6 @@ if __name__ == "__main__":
 						files.write("")
 						files.close()
 						process=subprocess.Popen("gnome-terminal -e 'python logger.py'",stdout=subprocess.PIPE, stderr=subprocess.STDOUT,shell=True,executable="/bin/sh")		
-				add_aditional_repos_and_updating()
 				processmenu(menu_data)
 			else:
 				processmenu(no_internet_menu)
