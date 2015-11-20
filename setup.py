@@ -108,7 +108,8 @@ def processmenu(menu, parent=None):
 			wait_for_internet()
 			for i in menu["options"][getin]["command"]:
 				os.system(i)
-			os.system("echo Please press <enter> to continue  && read input_variable") # run the command
+			os.system("echo Please press <enter> to continue") # run the command
+			raw_input()
 			screen.clear() #clears previous screen on key press and updates display based on pos
 			curses.reset_prog_mode()	 # reset to "current" curses environment
 			curses.curs_set(1)				 # reset doesn"t do this right
