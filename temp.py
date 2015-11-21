@@ -1,5 +1,5 @@
 
-
+'''
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -19,7 +19,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-'''
+
 import os,sys,getpass,curses
 import subprocess,threading,time
 # Define a function for running commands and capturing stdout line by line
@@ -132,3 +132,59 @@ while thread.isAlive():
 	sys.stdout.write(".")
 	sys.stdout.flush()
 	time.sleep(.1)
+'''
+import curses,curses.panel,subprocess
+screen = curses.initscr() #initializes a new window for capturing key presses
+curses.noecho() # Disables automatic echoing of key presses (prevents program from input each key twice)
+curses.cbreak() # Disables line buffering (runs each key as it is pressed rather than waiting for the return key to pressed)
+curses.start_color() # Lets you use colors when highlighting selected menu option
+screen.keypad(1) # Capture input from keypad
+y, x = screen.getmaxyx()
+resize = curses.is_term_resized(y, x)
+# Change this to use different colors when highlighting
+curses.init_pair(1,curses.COLOR_BLACK, curses.COLOR_WHITE) # Sets up color pair #1, it does black text with white background
+h = curses.color_pair(1) #h is the coloring for a highlighted menu option
+n = curses.A_NORMAL #n is the coloring for a non highlighted menu option
+main_window=curses.newwin(y,x,0,0)
+status_window=curses.newwin(1,x,y-1,0)
+main_window.border(0)
+status_window.border(0)
+main_panel=curses.panel.new_panel(main_window)
+main_window.scrollok(True)
+status_panel=curses.panel.new_panel(status_window)
+status_panel.top()
+main_panel.hide()
+status_panel.hide()
+def run_command(name):
+	main_panel.show()
+	status_panel.show()
+	p = subprocess.Popen(name, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,shell=True,executable="/bin/bash")
+	while(True):
+		retcode = p.poll() #returns None while subprocess is running
+		statement=p.stdout.readline()
+		try:
+			main_window.addstr(statement)
+		except:
+			pass
+		if statement.find("Get:")!=-1:
+			status_window.clear()
+			status_window.addstr("Downloading...",curses.A_STANDOUT)
+		elif statement.find("Reading package lists...")!=-1:
+			status_window.clear()
+			status_window.addstr("Starting...",curses.A_STANDOUT)
+		elif statement.find("Setting up"):
+			status_window.clear()
+			status_window.addstr("Completing Installation...",curses.A_STANDOUT)
+		else:
+			status_window.clear()
+			status_window.addstr("Installing...",curses.A_STANDOUT)
+		curses.panel.update_panels()
+		curses.doupdate()
+		if(retcode is not None):
+			break
+	main_panel.hide()
+	status_panel.hide()
+	curses.panel.update_panels()
+	curses.doupdate()
+	raw_input()
+run_command("sudo apt-get update")
