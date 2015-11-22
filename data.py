@@ -19,7 +19,7 @@ menu_data = {
                         {
                             "title": "YES",
                             "type": "command",
-                            "command": ["sudo apt-get install gcc build-essential python-dev python3-dev python-numpy python3-numpy python-scipy python3-scipy python-dateutil python-docutils python-feedparser python-gdata python-jinja2 python-ldap python-libxslt1 python-lxml python-mako python-mock python-openid python-psycopg2 python-psutil python-pybabel python-pychart python-pydot python-pyparsing python-reportlab python-simplejson python-tz python-unittest2 python-vatnumber python-vobject python-webdav python-werkzeug python-xlwt python-yaml python-zsi python3-dateutil python3-docutils python3-feedparser python3-jinja2 python3-lxml python3-mako python3-mock python3-psycopg2 python3-psutil python3-pyparsing python3-reportlab python3-simplejson python3-tz python3-werkzeug python3-yaml"]
+                            "command": ["sudo apt-get install gcc build-essential python-dev python3-dev python-numpy python3-numpy python-scipy python3-scipy python-dateutil python-docutils python-feedparser python-gdata python-jinja2 python-ldap python-libxslt1 python-lxml python-mako python-mock python-openid python-psycopg2 python-psutil mitmproxy python-pybabel python-pychart python-pydot python-pyparsing python-reportlab python-simplejson python-tz python-unittest2 python-vatnumber python-vobject python-webdav python-werkzeug python-xlwt python-yaml python-zsi python3-dateutil python3-docutils python3-feedparser python3-jinja2 python3-lxml python3-mako python3-mock python3-psycopg2 python3-psutil python3-pyparsing python3-reportlab python3-simplejson python3-tz python3-werkzeug python3-yaml"]
                         }
                     ]
                 },
@@ -300,7 +300,28 @@ menu_data = {
                     ]
                 }
             ]
-        }
+        },
+        {
+            "title": "Software",
+            "type": "menu",
+            "subtitle": "select the once u want to install",
+            "options": 
+            [
+                {
+                    "title": "Chrome",
+                    "type": "menu",
+                    "subtitle": "Press Yes if u want to install",
+                    "options": 
+                    [
+                        {
+                            "title": "YES",
+                            "type": "command",
+                            "command": ["wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -", "sudo sh -c 'echo \"deb http://dl.google.com/linux/chrome/deb/ stable main\" >> /etc/apt/sources.list.d/google-chrome.list'","sudo apt-get update","sudo apt-get install google-chrome-stable"]
+                        }
+                    ]
+                }
+            ]
+        }   
     ]
 }
 no_internet_menu={
