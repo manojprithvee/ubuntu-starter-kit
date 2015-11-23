@@ -319,6 +319,19 @@ menu_data = {
                             "command": ["wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -", "sudo sh -c 'echo \"deb http://dl.google.com/linux/chrome/deb/ stable main\" >> /etc/apt/sources.list.d/google-chrome.list'","sudo apt-get update","sudo apt-get install google-chrome-stable"]
                         }
                     ]
+                },
+                {
+                    "title": "IntelliJ IDEA(needs JAVA to work)",
+                    "type": "menu",
+                    "subtitle": "Press Yes if u want to install",
+                    "options": 
+                    [
+                        {
+                            "title": "YES",
+                            "type": "command",
+                            "command": ["sudo wget -O /usr/intellij.tar.gz http://download.jetbrains.com/idea/ideaIC-15.0.1.tar.gz","sudo tar xfz /usr/intellij.tar.gz","sudo cd idea*/bin","sudo ./idea.sh","sudo rm /usr/intellij.tar.gz"]
+                        }
+                    ]
                 }
             ]
         }   
