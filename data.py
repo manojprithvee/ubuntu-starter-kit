@@ -332,6 +332,19 @@ menu_data = {
                             "command": ["sudo wget -O /usr/intellij.tar.gz http://download.jetbrains.com/idea/ideaIC-15.0.1.tar.gz","sudo tar xfz /usr/intellij.tar.gz","sudo cd idea*/bin","sudo ./idea.sh","sudo rm /usr/intellij.tar.gz"]
                         }
                     ]
+                },
+                {
+                    "title": "VLC",
+                    "type": "menu",
+                    "subtitle": "Press Yes if u want to install",
+                    "options": 
+                    [
+                        {
+                            "title": "YES",
+                            "type": "command",
+                            "command": ["sudo apt-get install vlc"]
+                        }
+                    ]
                 }
             ]
         }   
