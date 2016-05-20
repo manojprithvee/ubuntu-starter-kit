@@ -1,7 +1,7 @@
 [![Twitter](https://img.shields.io/badge/Twitter-@Divakarmanoj123-blue.svg?style=flat)](https://twitter.com/Divakarmanoj123)
 # ubuntu-starter-kit
 
-**Ubuntu Starter Kit is a all in one software insatller which install all the software needed for a developer to start developing in ubuntu**
+**Ubuntu Starter Kit is a all in one software installer which install all the software needed for a developer to start developing in ubuntu**
 
 list of packages
 =================
@@ -13,7 +13,7 @@ list of packages
  - Scala
  - Go
  - Git
- - Pho
+ - Php
  - Perl
  - NodeJS
  - C++ and C
